@@ -24,17 +24,22 @@ const authUser = async (req, res) => {
 
   try {
     const checkUser = await userModel.findOne({ email });
-
-    // console.log(checkUser);
-
     if (checkUser) {
-      res.status(400).json({msg:"user already existed"});
-    }else if(!checkUser){
-      res.status(200);
-      console.log("Working well");
+      res.status(400).json({ msg: "user already existed" });
+    } else if (!checkUser) {
+      const createUser = userModel.create({
+        email,
+        phone,
+        password,
+        companyName,
+        companyAddress,
+      });
+      res
+        .status(201)
+        .json({ msg: "New user is create successfully"});
     }
   } catch (e) {
-    res.status(200).json({msg:"No user in this mail-id"});
+    res.status(200).json({ msg: "No user in this mail-id" });
   }
 };
 
