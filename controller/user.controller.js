@@ -11,6 +11,7 @@ const createUserDetails = async (req, res) => {
       companyName,
       companyAddress,
     });
+    console.log(`User create success`);
     res.status(200).json(userDetails);
   } catch (e) {
     console.log(`Recheck your code, the error is ${e}`);
