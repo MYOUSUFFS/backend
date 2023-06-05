@@ -4,7 +4,11 @@ import mongoose from "mongoose";
 import router from "./router/user.routes.js";
 import multer from "multer";
 
-// const upload = multer(); //TODO currently i'm not using this...
+/* 
+ Todo - currently i'm not using this... This is for image uploader package 
+ Todo - but now use this only for form data in API Platform like Postman
+ */
+// const upload = multer();
 
 dotenv.config();
 const port = process.env.PORT;

@@ -25,7 +25,7 @@ const authUser = async (req, res) => {
   try {
     const checkUser = await userModel.findOne({ email });
     if (checkUser) {
-      res.status(400).json({ msg: "user already existed" });
+      return res.status(400).json({ msg: "user already existed" });
     } else if (!checkUser) {
       const createUser = userModel.create({
         email,
@@ -34,12 +34,10 @@ const authUser = async (req, res) => {
         companyName,
         companyAddress,
       });
-      res
-        .status(201)
-        .json({ msg: "New user is create successfully"});
+      return res.status(201).json({ msg: "New user is create successfully" });
     }
   } catch (e) {
-    res.status(200).json({ msg: "No user in this mail-id" });
+    return res.status(200).json({ msg: "No user in this mail-id" });
   }
 };
 
